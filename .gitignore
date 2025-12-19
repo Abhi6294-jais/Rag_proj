@@ -1,30 +1,6 @@
-# --- Python & Virtual Environments ---
-__pycache__/
-*.py[cod]
-*$py.class
-venv/
-env/
-.venv/
-
-# --- Security (NEVER UPLOAD THESE) ---
 .env
-.streamlit/secrets.toml
-**/*apikey*
-**/*credential*
-
-# --- OS Generated Files ---
-.DS_Store
-Thumbs.db
-
-# --- Project Specific (Generated Data) ---
-# Ignore the local vector database folder (it's large and regenerates)
-faiss_db_index/
-faiss_db_index_test/
-
-# Ignore local PDF uploads or temp files
-temp_manuals/
+venv/
+__pycache__/
 *.pdf
-
-# Ignore IDE settings
-.vscode/
-.idea/
+faiss_db_index/
+.ipynb_checkpoints/
