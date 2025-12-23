@@ -33,8 +33,9 @@ def load_resources():
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
-    from langchain.document_loaders import PyPDFLoader
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    from langchain_community.document_loaders import PyPDFLoader
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+
 
     loader = PyPDFLoader("sample-service-manual.pdf")
     docs = loader.load()
