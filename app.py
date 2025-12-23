@@ -29,11 +29,24 @@ else:
 # --- 3. LOAD BRAIN ---
 @st.cache_resource
 def load_resources():
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    try:
-        return FAISS.load_local("faiss_db_index_test", embeddings, allow_dangerous_deserialization=True)
-    except:
-        return None
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
+    from langchain.document_loaders import PyPDFLoader
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+    loader = PyPDFLoader("sample-service-manual.pdf")
+    docs = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=800,
+        chunk_overlap=100
+    )
+    chunks = splitter.split_documents(docs)
+
+    return FAISS.from_documents(chunks, embeddings)
+
 
 vector_store = load_resources()
 
