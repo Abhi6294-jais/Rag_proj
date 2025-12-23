@@ -4,3 +4,4 @@ __pycache__/
 *.pdf
 faiss_db_index/
 .ipynb_checkpoints/
+echo "faiss_db_index_test/" >> .gitignore
