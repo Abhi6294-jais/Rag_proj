@@ -88,7 +88,7 @@ if st.button("Extract Specifications", type="primary"):
         with st.spinner("⚙️ Analyzing manual..."):
             try:
                 # A. Run AI
-                llm = ChatGroq(temperature=0, model_name="llama-3.3-70b-versatile", api_key=api_key)
+                llm = ChatGroq(temperature=0, model_name="llama-3.1-8b-instant", api_key=api_key)
                 docs = vector_store.similarity_search(query, k=3)
                 context = "\n".join([d.page_content for d in docs])
                 
